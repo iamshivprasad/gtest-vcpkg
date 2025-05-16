@@ -25,14 +25,14 @@ jobs:
     - name: Restore vcpkg cache
       uses: actions/cache/restore@v4
       with:
-          path: ${{ env.VCPKG_INSTALLED_DIR }}
+          path: ${{ env.VCPKG_ROOT }}
           key: vcpkg-x64-linux-${{ hashFiles('vcpkg.json') }}
           restore-keys: vcpkg-x64-linux-
   
     - name: Set up Vcpkg
       uses: lukka/run-vcpkg@v11
       with:
-        vcpkgDirectory: ${{ env.VCPKG_INSTALLED_DIR }}
+        vcpkgDirectory: ${{ env.VCPKG_ROOT }}
         vcpkgJsonGlob: "vcpkg.json"
         vcpkgGitCommitId: 'd6995a0cf3cafda5e9e52749fad075dd62bfd90c' # Use a specific commit for reproducibility
           
